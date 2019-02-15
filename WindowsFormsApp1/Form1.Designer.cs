@@ -36,7 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAddUser = new System.Windows.Forms.TextBox();
-            this.txtAddWhere = new System.Windows.Forms.TextBox();
+            this.txtAddSite = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.listPass = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -71,7 +71,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtAddUser);
-            this.groupBox1.Controls.Add(this.txtAddWhere);
+            this.groupBox1.Controls.Add(this.txtAddSite);
             this.groupBox1.Location = new System.Drawing.Point(8, 8);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(266, 194);
@@ -119,9 +119,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(169, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.Size = new System.Drawing.Size(25, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Where";
+            this.label1.Text = "Site";
             // 
             // txtAddUser
             // 
@@ -130,12 +130,12 @@
             this.txtAddUser.Size = new System.Drawing.Size(135, 20);
             this.txtAddUser.TabIndex = 1;
             // 
-            // txtAddWhere
+            // txtAddSite
             // 
-            this.txtAddWhere.Location = new System.Drawing.Point(6, 19);
-            this.txtAddWhere.Name = "txtAddWhere";
-            this.txtAddWhere.Size = new System.Drawing.Size(135, 20);
-            this.txtAddWhere.TabIndex = 0;
+            this.txtAddSite.Location = new System.Drawing.Point(6, 19);
+            this.txtAddSite.Name = "txtAddSite";
+            this.txtAddSite.Size = new System.Drawing.Size(135, 20);
+            this.txtAddSite.TabIndex = 0;
             // 
             // listPass
             // 
@@ -206,19 +206,19 @@
             // 
             this.button6.Location = new System.Drawing.Point(473, 225);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(134, 26);
+            this.button6.Size = new System.Drawing.Size(84, 26);
             this.button6.TabIndex = 13;
-            this.button6.Text = "Export Encrypted Data";
+            this.button6.Text = "Load Data";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(613, 225);
+            this.button7.Location = new System.Drawing.Point(563, 225);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(134, 26);
+            this.button7.Size = new System.Drawing.Size(78, 26);
             this.button7.TabIndex = 14;
-            this.button7.Text = "Import Encrypted Data";
+            this.button7.Text = "Save Data";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
@@ -269,9 +269,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(21, 225);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.Size = new System.Drawing.Size(77, 13);
             this.label6.TabIndex = 18;
-            this.label6.Text = "Cipher Key";
+            this.label6.Text = "Cipher Number";
             // 
             // label7
             // 
@@ -292,12 +292,12 @@
             this.label8.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label8.Location = new System.Drawing.Point(470, 256);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(257, 39);
+            this.label8.Size = new System.Drawing.Size(243, 39);
             this.label8.TabIndex = 20;
-            this.label8.Text = "Exports your data to where your program is located.\r\nExported passwords are saved" +
-    " in the encrypted state\r\n(remember to enter your number before exporting).";
+            this.label8.Text = "Saves your data to where your program is located.\r\nLoaded passwords are in the en" +
+    "crypted state\r\n(remember to enter your cipher number).";
             // 
-            // Form1
+            // PassForm
             // 
             this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,6 +313,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "PassForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Password Manager";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -336,7 +337,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtAddUser;
-        private System.Windows.Forms.TextBox txtAddWhere;
+        private System.Windows.Forms.TextBox txtAddSite;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ListBox listPass;
         private System.Windows.Forms.GroupBox groupBox2;

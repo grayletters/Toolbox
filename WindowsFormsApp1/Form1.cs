@@ -33,17 +33,22 @@ namespace WindowsFormsApp1
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (txtAddSite.Text == "" || txtAddUser.Text == "" || txtAddPass.Text == "")
+            {
+                MessageBox.Show("Please make sure the fields are all filled!", "Data Error");
+                return;
+            }
             Int16 shift_key = Convert.ToInt16(txtKey.Text);
 
             Node add_data = new Node() {
-                site = txtAddWhere.Text,
-                data = (txtAddWhere.Text, txtAddUser.Text, NodeUtils.Encrypt(txtAddPass.Text, get_cipher_type(), shift_key))
+                site = txtAddSite.Text,
+                data = (txtAddSite.Text, txtAddUser.Text, NodeUtils.Encrypt(txtAddPass.Text, get_cipher_type(), shift_key))
             };
-            txtAddWhere.Text = "";
+            txtAddSite.Text = "";
             txtAddUser.Text = "";
             txtAddPass.Text = "";
             pass_data.Add(add_data);
-            txtAddWhere.Focus();
+            txtAddSite.Focus();
         }
 
         private void listPass_SelectedIndexChanged(object sender, EventArgs e)
