@@ -191,6 +191,7 @@
             this.listPass.TabIndex = 1;
             this.listPass.SelectedIndexChanged += new System.EventHandler(this.listPass_SelectedIndexChanged);
             this.listPass.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listPass_KeyUp);
+            this.listPass.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listPass_MouseDoubleClick);
             this.listPass.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listPass_MouseDown_1);
             // 
             // cmenuListRightClick
@@ -198,7 +199,7 @@
             this.cmenuListRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listpassMenuDelete});
             this.cmenuListRightClick.Name = "contextMenuStrip1";
-            this.cmenuListRightClick.Size = new System.Drawing.Size(181, 48);
+            this.cmenuListRightClick.Size = new System.Drawing.Size(108, 26);
             // 
             // listpassMenuDelete
             // 
@@ -368,7 +369,7 @@
             // 
             this.grpCiphers.Controls.Add(this.rbCipherKey);
             this.grpCiphers.Controls.Add(this.rbCipherShift);
-            this.grpCiphers.Location = new System.Drawing.Point(294, 218);
+            this.grpCiphers.Location = new System.Drawing.Point(473, 222);
             this.grpCiphers.Name = "grpCiphers";
             this.grpCiphers.Size = new System.Drawing.Size(268, 77);
             this.grpCiphers.TabIndex = 17;
@@ -390,7 +391,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.SystemColors.Info;
             this.label7.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label7.Location = new System.Drawing.Point(21, 256);
+            this.label7.Location = new System.Drawing.Point(286, 222);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(245, 39);
             this.label7.TabIndex = 19;
@@ -402,7 +403,7 @@
             this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 307);
+            this.ClientSize = new System.Drawing.Size(753, 269);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.grpCiphers);

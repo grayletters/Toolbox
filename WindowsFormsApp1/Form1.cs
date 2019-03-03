@@ -360,5 +360,10 @@ namespace WindowsFormsApp1
             }
             update_user_data();
         }
+
+        private void listPass_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            //System.Diagnostics.Process.Start("http://gmail.com");
+        }
     }
 }
