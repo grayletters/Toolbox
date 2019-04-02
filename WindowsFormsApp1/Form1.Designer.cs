@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtAddPass = new System.Windows.Forms.TextBox();
@@ -65,6 +66,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.label7 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.cmenuListRightClick.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -75,6 +78,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.txtAddPass);
@@ -89,6 +95,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add site";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(108, 138);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label8
             // 
@@ -190,6 +207,7 @@
             this.listPass.Size = new System.Drawing.Size(182, 82);
             this.listPass.TabIndex = 1;
             this.listPass.SelectedIndexChanged += new System.EventHandler(this.listPass_SelectedIndexChanged);
+            this.listPass.DoubleClick += new System.EventHandler(this.listPass_DoubleClick);
             this.listPass.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listPass_KeyUp);
             this.listPass.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listPass_MouseDoubleClick);
             this.listPass.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listPass_MouseDown_1);
@@ -398,6 +416,24 @@
             this.label7.Text = "Choose a unique number (1-100) and remember it. \r\nEnter your number BEFORE adding" +
     " the site data\r\nand BEFORE viewing passwords.";
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(108, 168);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(135, 20);
+            this.textBox2.TabIndex = 22;
+            this.textBox2.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(189, 143);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 13);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Password";
+            this.label11.Visible = false;
+            // 
             // PassForm
             // 
             this.AcceptButton = this.btnAdd;
@@ -466,6 +502,9 @@
         private System.Windows.Forms.Button btnDataPrevUser;
         private System.Windows.Forms.Button btnDelUser;
         private System.Windows.Forms.Button btnDataSave;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 

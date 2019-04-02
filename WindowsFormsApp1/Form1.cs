@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
         private BindingList<Node> pass_data = new BindingList<Node>();
         private Search search_box = new Search();
         private Dictionary<string, List<ValueTuple<string, string>>> pass_data_all = new Dictionary<string, List<(string, string)>>();
+        private Dictionary<string, string> site_map = new Dictionary<string, string>();
         private List<ValueTuple<string, string>> current_site = null;
         private int current_user = 0;
         private bool start_flag = true;
@@ -88,13 +89,15 @@ namespace WindowsFormsApp1
                 if (i % 3 == 0)
                 {
                     //Int16 shift_key = Convert.ToInt16(txtKey.Text);
-                    add_to_pass_data_all(site, user, password);
-                    sites_loaded[site] = true;                    
+                    string site_name = NodeUtils.get_site_name(site);
+                    add_to_pass_data_all(site_name, user, password);
+                    sites_loaded[site] = true;
+                    site_map[site_name] = site;
                 }
             }
             foreach (string site_in_file in sites_loaded.Keys)
             {
-                search_box.Add(site_in_file);
+                search_box.Add(NodeUtils.get_site_name(site_in_file));
             }
         }
         
@@ -105,7 +108,7 @@ namespace WindowsFormsApp1
             {
                 foreach ((string user, string password) in pass_data_all[site])
                 {
-                    Node new_site = new Node() { site = site, data = (site, user, password) };
+                    Node new_site = new Node() { site = NodeUtils.get_site_name(site), data = (site, user, password) };
                     pass_data.Add(new_site);
                     break; //only load the site name
                 }
@@ -136,12 +139,17 @@ namespace WindowsFormsApp1
             Int16 shift_key = Convert.ToInt16(txtKey.Text);
             string encrypted_user = NodeUtils.Encrypt(txtAddUser.Text, get_cipher_type(), shift_key);
             string encrypted_pass = NodeUtils.Encrypt(txtAddPass.Text, get_cipher_type(), shift_key);
+            string site_name = NodeUtils.get_site_name(txtAddSite.Text);
             Node add_data = new Node() {
-                site = txtAddSite.Text,
-                data = (txtAddSite.Text, encrypted_user, encrypted_pass)
+                site = site_name,
+                data = (site_name, encrypted_user, encrypted_pass)
             };
-            if (false == pass_data_all.ContainsKey(txtAddSite.Text)) search_box.Add(txtAddSite.Text);
-            if (false == add_to_pass_data_all(txtAddSite.Text, encrypted_user, encrypted_pass)) pass_data.Add(add_data);
+            if (false == pass_data_all.ContainsKey(site_name))
+            {
+                search_box.Add(site_name);
+                site_map[site_name] = txtAddSite.Text;
+            }
+            if (false == add_to_pass_data_all(site_name, encrypted_user, encrypted_pass)) pass_data.Add(add_data);
             txtAddUser.Text = "";
             txtAddPass.Text = "";
             txtAddSite.Text = "";
@@ -159,7 +167,7 @@ namespace WindowsFormsApp1
             if (null != selected_site && true == CipherCheck())
             {
                 current_user = 0;
-                current_site = pass_data_all[selected_site.site];
+                current_site = pass_data_all[selected_site.data.Item1];
                 int site_users = current_site.Count;
                 lblDataUsers.Text = "Users : " + site_users.ToString();
 
@@ -173,8 +181,8 @@ namespace WindowsFormsApp1
                     btnDataPrevUser.Enabled = false;
                 }
                 Int16 shift_key = Convert.ToInt16(txtKey.Text);
-                List<(string, string)> user_list = pass_data_all[selected_site.site];
-                (string user, string password) = user_list[current_user];
+                //List<(string, string)> user_list = pass_data_all[selected_site.data.Item1];
+                (string user, string password) = current_site[current_user];
                 txtDataUser.Text = NodeUtils.Decrypt(user, get_cipher_type(), shift_key);
                 txtDataPass.Text = NodeUtils.Decrypt(password, get_cipher_type(), shift_key);
             }
@@ -204,7 +212,7 @@ namespace WindowsFormsApp1
         {
             if (e.KeyCode == Keys.Delete)
             {
-                pass_data_all.Remove(((Node)listPass.SelectedItem).site);
+                pass_data_all.Remove(((Node)listPass.SelectedItem).data.Item1);
 
                 listPass.SelectedItem = null;
                 current_site = null;
@@ -230,7 +238,7 @@ namespace WindowsFormsApp1
             { 
                 foreach ((string, string) users in pass_data_all[current_site])
                 {
-                    lines[i] = current_site;
+                    lines[i] = site_map[current_site];
                     lines[i + 1] = users.Item1;
                     lines[i + 2] = users.Item2;
                     i += 3;
@@ -364,6 +372,39 @@ namespace WindowsFormsApp1
         private void listPass_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             //System.Diagnostics.Process.Start("http://gmail.com");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            label11.Text = NodeUtils.get_site_name(textBox2.Text);
+        }
+
+        private void listPass_DoubleClick(object sender, EventArgs e)
+        {
+            string site = ((Node)listPass.SelectedItem).data.Item1;
+            string url = "";
+            if (string.Compare(site, "Gmail", true) == 0)
+            {
+                url = @"https://mail.google.com/mail/u/?authuser=" + txtDataUser.Text;
+            } else
+            {
+                url = site_map[site];
+            }
+            try
+            {
+                System.Diagnostics.Process.Start(url);
+            } catch
+            {
+                using (var form = new PasswordsManage.EnterNewSite(Cursor.Position.X - 100, Cursor.Position.Y - 70))
+                {
+                    DialogResult result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        string newURL = form.URL;            //values preserved after close                    
+                        site_map[site] = newURL;
+                    }
+                }
+            }
         }
     }
 }

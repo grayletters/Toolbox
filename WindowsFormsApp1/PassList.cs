@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
@@ -47,6 +48,30 @@ namespace WindowsFormsApp1
                     break;
             }
             return res.ToString();
+        }
+
+        public static string get_site_name(string s)
+        {
+            string[] patterns = { @"\bwww\.(\S+)\.", //www.site.B
+                                  @"\b(\S+)\.\S+\.", //site.B.C
+                                  @"\b(\S+)\.\S+", //site.B, B doesnt have '.'
+                                  @"\b(\S+)" }; //site, not '.'
+            foreach (string pattern in patterns)
+            {
+                string http_pattern = @"[\\/:]+" + pattern; //check for the "http://" start
+                Match tryFullMatch = Regex.Match(s, http_pattern);
+                if (tryFullMatch.Success)
+                {
+                    return tryFullMatch.Groups[1].Value;
+                }
+                Match tryMatch = Regex.Match(s, pattern);
+                if (tryMatch.Success)
+                {
+                    return tryMatch.Groups[1].Value;
+                }
+            }
+
+            return "N/A";
         }
     }
 
