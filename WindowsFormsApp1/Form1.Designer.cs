@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -46,6 +48,11 @@
             this.cmenuListRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.listpassMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbLetterCount = new System.Windows.Forms.CheckBox();
+            this.cbSymbol = new System.Windows.Forms.CheckBox();
+            this.cbSmallLetter = new System.Windows.Forms.CheckBox();
+            this.cbLargeLetter = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.btnDelUser = new System.Windows.Forms.Button();
             this.btnDataSave = new System.Windows.Forms.Button();
             this.lblDataUsers = new System.Windows.Forms.Label();
@@ -66,8 +73,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.cbNumber = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.cmenuListRightClick.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -78,27 +85,48 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.cbNumber);
             this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.cbLetterCount);
             this.groupBox1.Controls.Add(this.btnAdd);
+            this.groupBox1.Controls.Add(this.cbSymbol);
             this.groupBox1.Controls.Add(this.txtAddPass);
+            this.groupBox1.Controls.Add(this.cbSmallLetter);
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.cbLargeLetter);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtAddUser);
             this.groupBox1.Controls.Add(this.txtAddSite);
             this.groupBox1.Location = new System.Drawing.Point(8, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(266, 194);
+            this.groupBox1.Size = new System.Drawing.Size(309, 194);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add site";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(792, 222);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 13);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Password";
+            this.label11.Visible = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(711, 247);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(135, 20);
+            this.textBox2.TabIndex = 22;
+            this.textBox2.Visible = false;
+            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(108, 138);
+            this.button2.Location = new System.Drawing.Point(711, 217);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 21;
@@ -134,6 +162,7 @@
             this.txtAddPass.Name = "txtAddPass";
             this.txtAddPass.Size = new System.Drawing.Size(135, 20);
             this.txtAddPass.TabIndex = 5;
+            this.txtAddPass.TextChanged += new System.EventHandler(this.txtAddPass_TextChanged);
             // 
             // label3
             // 
@@ -181,7 +210,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.Info;
             this.label9.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label9.Location = new System.Drawing.Point(84, 170);
+            this.label9.Location = new System.Drawing.Point(81, 168);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(142, 13);
             this.label9.TabIndex = 22;
@@ -189,7 +218,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(6, 166);
+            this.button1.Location = new System.Drawing.Point(3, 164);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(72, 21);
             this.button1.TabIndex = 21;
@@ -202,7 +231,7 @@
             this.listPass.ContextMenuStrip = this.cmenuListRightClick;
             this.listPass.DataSource = this.listPass.CustomTabOffsets;
             this.listPass.FormattingEnabled = true;
-            this.listPass.Location = new System.Drawing.Point(12, 28);
+            this.listPass.Location = new System.Drawing.Point(9, 26);
             this.listPass.Name = "listPass";
             this.listPass.Size = new System.Drawing.Size(182, 82);
             this.listPass.TabIndex = 1;
@@ -228,6 +257,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.btnDelUser);
             this.groupBox2.Controls.Add(this.btnDataSave);
             this.groupBox2.Controls.Add(this.lblDataUsers);
@@ -242,16 +272,78 @@
             this.groupBox2.Controls.Add(this.txtDataUser);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.listPass);
-            this.groupBox2.Location = new System.Drawing.Point(294, 8);
+            this.groupBox2.Location = new System.Drawing.Point(344, 8);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(452, 194);
+            this.groupBox2.Size = new System.Drawing.Size(481, 194);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Data";
             // 
+            // cbLetterCount
+            // 
+            this.cbLetterCount.AutoSize = true;
+            this.cbLetterCount.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cbLetterCount.Enabled = false;
+            this.cbLetterCount.ForeColor = System.Drawing.Color.BlueViolet;
+            this.cbLetterCount.Location = new System.Drawing.Point(168, 172);
+            this.cbLetterCount.Name = "cbLetterCount";
+            this.cbLetterCount.Size = new System.Drawing.Size(69, 17);
+            this.cbLetterCount.TabIndex = 31;
+            this.cbLetterCount.Text = "8+ letters";
+            this.cbLetterCount.UseVisualStyleBackColor = false;
+            // 
+            // cbSymbol
+            // 
+            this.cbSymbol.AutoSize = true;
+            this.cbSymbol.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cbSymbol.Enabled = false;
+            this.cbSymbol.ForeColor = System.Drawing.Color.BlueViolet;
+            this.cbSymbol.Location = new System.Drawing.Point(170, 149);
+            this.cbSymbol.Name = "cbSymbol";
+            this.cbSymbol.Size = new System.Drawing.Size(60, 17);
+            this.cbSymbol.TabIndex = 30;
+            this.cbSymbol.Text = "Symbol";
+            this.cbSymbol.UseVisualStyleBackColor = false;
+            // 
+            // cbSmallLetter
+            // 
+            this.cbSmallLetter.AutoSize = true;
+            this.cbSmallLetter.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cbSmallLetter.Enabled = false;
+            this.cbSmallLetter.ForeColor = System.Drawing.Color.BlueViolet;
+            this.cbSmallLetter.Location = new System.Drawing.Point(81, 172);
+            this.cbSmallLetter.Name = "cbSmallLetter";
+            this.cbSmallLetter.Size = new System.Drawing.Size(81, 17);
+            this.cbSmallLetter.TabIndex = 29;
+            this.cbSmallLetter.Text = "Small Letter";
+            this.cbSmallLetter.UseVisualStyleBackColor = false;
+            // 
+            // cbLargeLetter
+            // 
+            this.cbLargeLetter.AutoSize = true;
+            this.cbLargeLetter.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cbLargeLetter.Enabled = false;
+            this.cbLargeLetter.ForeColor = System.Drawing.Color.BlueViolet;
+            this.cbLargeLetter.Location = new System.Drawing.Point(81, 149);
+            this.cbLargeLetter.Name = "cbLargeLetter";
+            this.cbLargeLetter.Size = new System.Drawing.Size(83, 17);
+            this.cbLargeLetter.TabIndex = 28;
+            this.cbLargeLetter.Text = "Large Letter";
+            this.cbLargeLetter.UseVisualStyleBackColor = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label12.Location = new System.Drawing.Point(124, 133);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(113, 13);
+            this.label12.TabIndex = 27;
+            this.label12.Text = "Password Strength";
+            // 
             // btnDelUser
             // 
-            this.btnDelUser.Location = new System.Drawing.Point(304, 166);
+            this.btnDelUser.Location = new System.Drawing.Point(271, 26);
             this.btnDelUser.Name = "btnDelUser";
             this.btnDelUser.Size = new System.Drawing.Size(72, 21);
             this.btnDelUser.TabIndex = 26;
@@ -261,7 +353,7 @@
             // 
             // btnDataSave
             // 
-            this.btnDataSave.Location = new System.Drawing.Point(382, 167);
+            this.btnDataSave.Location = new System.Drawing.Point(349, 26);
             this.btnDataSave.Name = "btnDataSave";
             this.btnDataSave.Size = new System.Drawing.Size(57, 21);
             this.btnDataSave.TabIndex = 25;
@@ -273,7 +365,7 @@
             // 
             this.lblDataUsers.AutoSize = true;
             this.lblDataUsers.BackColor = System.Drawing.SystemColors.Info;
-            this.lblDataUsers.Location = new System.Drawing.Point(234, 28);
+            this.lblDataUsers.Location = new System.Drawing.Point(266, 131);
             this.lblDataUsers.Name = "lblDataUsers";
             this.lblDataUsers.Size = new System.Drawing.Size(40, 13);
             this.lblDataUsers.TabIndex = 24;
@@ -282,7 +374,7 @@
             // btnDataNextUser
             // 
             this.btnDataNextUser.Enabled = false;
-            this.btnDataNextUser.Location = new System.Drawing.Point(377, 24);
+            this.btnDataNextUser.Location = new System.Drawing.Point(349, 129);
             this.btnDataNextUser.Name = "btnDataNextUser";
             this.btnDataNextUser.Size = new System.Drawing.Size(31, 20);
             this.btnDataNextUser.TabIndex = 23;
@@ -293,7 +385,7 @@
             // btnDataPrevUser
             // 
             this.btnDataPrevUser.Enabled = false;
-            this.btnDataPrevUser.Location = new System.Drawing.Point(340, 24);
+            this.btnDataPrevUser.Location = new System.Drawing.Point(312, 129);
             this.btnDataPrevUser.Name = "btnDataPrevUser";
             this.btnDataPrevUser.Size = new System.Drawing.Size(31, 20);
             this.btnDataPrevUser.TabIndex = 21;
@@ -307,7 +399,7 @@
             this.label10.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.Location = new System.Drawing.Point(7, 138);
+            this.label10.Location = new System.Drawing.Point(4, 136);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(80, 13);
             this.label10.TabIndex = 10;
@@ -315,15 +407,15 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(93, 135);
+            this.textBox1.Location = new System.Drawing.Point(90, 133);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(135, 20);
+            this.textBox1.Size = new System.Drawing.Size(101, 20);
             this.textBox1.TabIndex = 9;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtDataPass
             // 
-            this.txtDataPass.Location = new System.Drawing.Point(304, 96);
+            this.txtDataPass.Location = new System.Drawing.Point(333, 96);
             this.txtDataPass.Name = "txtDataPass";
             this.txtDataPass.Size = new System.Drawing.Size(135, 20);
             this.txtDataPass.TabIndex = 8;
@@ -331,7 +423,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(234, 99);
+            this.label5.Location = new System.Drawing.Point(265, 100);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 7;
@@ -339,7 +431,7 @@
             // 
             // txtDataUser
             // 
-            this.txtDataUser.Location = new System.Drawing.Point(304, 58);
+            this.txtDataUser.Location = new System.Drawing.Point(333, 58);
             this.txtDataUser.Name = "txtDataUser";
             this.txtDataUser.Size = new System.Drawing.Size(135, 20);
             this.txtDataUser.TabIndex = 7;
@@ -347,7 +439,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(234, 65);
+            this.label4.Location = new System.Drawing.Point(265, 66);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 13);
             this.label4.TabIndex = 7;
@@ -416,30 +508,39 @@
             this.label7.Text = "Choose a unique number (1-100) and remember it. \r\nEnter your number BEFORE adding" +
     " the site data\r\nand BEFORE viewing passwords.";
             // 
-            // textBox2
+            // cbNumber
             // 
-            this.textBox2.Location = new System.Drawing.Point(108, 168);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(135, 20);
-            this.textBox2.TabIndex = 22;
-            this.textBox2.Visible = false;
+            this.cbNumber.AutoSize = true;
+            this.cbNumber.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cbNumber.Enabled = false;
+            this.cbNumber.ForeColor = System.Drawing.Color.BlueViolet;
+            this.cbNumber.Location = new System.Drawing.Point(236, 149);
+            this.cbNumber.Name = "cbNumber";
+            this.cbNumber.Size = new System.Drawing.Size(63, 17);
+            this.cbNumber.TabIndex = 32;
+            this.cbNumber.Text = "Number";
+            this.cbNumber.UseVisualStyleBackColor = false;
             // 
-            // label11
+            // label13
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(189, 143);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(53, 13);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "Password";
-            this.label11.Visible = false;
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.SystemColors.Info;
+            this.label13.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label13.Location = new System.Drawing.Point(7, 111);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(237, 13);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "double click the site name to open it in a browser";
             // 
             // PassForm
             // 
             this.AcceptButton = this.btnAdd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 269);
+            this.ClientSize = new System.Drawing.Size(831, 269);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.grpCiphers);
@@ -505,6 +606,13 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox cbLetterCount;
+        private System.Windows.Forms.CheckBox cbSymbol;
+        private System.Windows.Forms.CheckBox cbSmallLetter;
+        private System.Windows.Forms.CheckBox cbLargeLetter;
+        private System.Windows.Forms.CheckBox cbNumber;
+        private System.Windows.Forms.Label label13;
     }
 }
 

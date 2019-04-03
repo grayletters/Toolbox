@@ -406,5 +406,31 @@ namespace WindowsFormsApp1
                 }
             }
         }
+
+        /*large, small, count, symbol*/
+        private (bool, bool, bool, bool, bool) analyse_password_strength(string password)
+        {
+            bool bLargeLetter = false;
+            bool bSmallLetter = false;
+            bool bLetterCount = false;
+            bool bSymbol = false;
+            bool bNumber = false;
+            foreach (char c in password)
+            {
+                bool bIsAlphaNumeric = false;
+                if (c >= 'A' && c <= 'Z') { bLargeLetter = true; bIsAlphaNumeric = true; }
+                if (c >= 'a' && c <= 'z') { bSmallLetter = true; bIsAlphaNumeric = true; }
+                if (c >= '0' && c <= '9') { bNumber = true; bIsAlphaNumeric = true; }
+                if (!bIsAlphaNumeric) bSymbol = true;                
+            }
+            bLetterCount = (password.Length >= 8);
+            return (bLargeLetter, bSmallLetter, bLetterCount, bSymbol, bNumber);
+        }
+
+        private void txtAddPass_TextChanged(object sender, EventArgs e)
+        {
+            (cbLargeLetter.Checked, cbSmallLetter.Checked, cbLetterCount.Checked, cbSymbol.Checked, cbNumber.Checked) = 
+                analyse_password_strength(txtAddPass.Text);
+        }
     }
 }
