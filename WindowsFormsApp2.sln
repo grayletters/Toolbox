@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuiProject", "WindowsFormsA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Passwords", "WindowsFormsApp1\Passwords.csproj", "{5C2FC06F-5058-475A-A122-F3D9488B1EE7}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{AC284F0D-4D1F-43E1-9A05-25A5F59952BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,8 @@ Global
 		{5C2FC06F-5058-475A-A122-F3D9488B1EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C2FC06F-5058-475A-A122-F3D9488B1EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C2FC06F-5058-475A-A122-F3D9488B1EE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC284F0D-4D1F-43E1-9A05-25A5F59952BF}.Debug|Any CPU.ActiveCfg = Debug
+		{AC284F0D-4D1F-43E1-9A05-25A5F59952BF}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
